@@ -1,46 +1,89 @@
-# Discouse chapter 1 
+Discourse Chapter 1
 
-## Overview
+Week 1 – C# Windows Forms & Variables Practice
+
+Overview
 
 This practice demonstrates how to:
 
-- Create string variables
-- Combine two string values
-- Store the combined value in another variable
-- Display the result using a Label control
+- Create and assign string and integer variables from user inputs.
+- Parse string values into integer types using "int.Parse()".
+- Clear TextBox and Label controls using ".Clear()", "string.Empty", and """".
+- Reset form fields using button event handlers.
 
 ---
 
-## 1. Creating Variables
+1. Assigning Date Input Variables
 
-In this step, three string variables are created to store the user's name information.
+In this step, string variables are assigned directly from the text values entered into the date input controls.
 
-- `FirstName` stores the first name.
-- `SecondName` stores the second name.
-- `FullName` stores the complete name after combining the first and second names.
+- "Day_of_the_week" – stores input from "txtdayoftheweek".
+- "Name_of_the_month" – stores input from "txtdayofthemonth".
+- "Numeric_of_the_month" – stores input from "txtdayofthenumeric".
+- "day_of_the_year" – stores input from "txtyear".
 
-The following screenshot shows how the variables are declared in C#.
+// Assign variables to use input
+Day_of_the_week = txtdayoftheweek.Text;
+Name_of_the_month = txtdayofthemonth.Text;
+Numeric_of_the_month = txtdayofthenumeric.Text;
+day_of_the_year = txtyear.Text;
 
-![Creating Variables](Screenshots/Creating_Variables.png)
+---
 
-## 2. Concatenating the First Name and Second Name
+2. Clearing Student Form Controls
 
-In this step, the first name and second name are combined using the `+` operator.
+In this step, the button click event resets all input fields for the student form using the ".Clear()" method and empties the label text using "string.Empty".
 
-A space `" "` is added between the two names so that the final result is displayed correctly.
+private void bttclear_Click(object sender, EventArgs e)
+{
+    txtname.Clear();
+    txtstudentid.Clear();
+    txtdepartment.Clear();
+    txtsemester.Clear();
+    lblshowinfo.Text = string.Empty;
+}
 
-The result is stored in the `FullName` variable.
+---
 
-The following screenshot shows the string concatenation process.
+3. Student Input Variables and Parsing
 
-![String Concatenation](Screenshots/String_Concatinatiin.png)
+In this step, variables are declared and user inputs are captured from the TextBoxes. String values are converted into integers using "int.Parse()".
 
-## 3. Displaying the Full Name
+- "name" – stores the student's name.
+- "studentid" – converts and stores the student ID as an integer.
+- "department" – stores the student's department.
+- "semester" – converts and stores the semester number as an integer.
 
-After the first name and second name are combined, the value stored in `FullName` is displayed in a Label control.
+// Step 1
+string name, department, fullInfo;
 
-The `.Text` property of the label is used to show the result on the Windows Form.
+name = txtname.Text;
+int studentid = int.Parse(txtstudentid.Text);
+department = txtdepartment.Text;
+int semester = int.Parse(txtsemester.Text);
 
-The following screenshot shows how the full name is displayed.
+---
 
-![Display Output](Screenshots/Display_output.png)
+4. Clearing Date Form TextBoxes and Labels
+
+In this step, the Clear button event resets all date TextBoxes and clears the output label by assigning an empty string """".
+
+private void bbtClear_Click(object sender, EventArgs e)
+{
+    // Clear TextBoxes and Label
+
+    // Clearing TextBoxes
+    txtdayofthemonth.Text = "";
+    txtdayoftheweek.Text = "";
+    txtdayofthenumeric.Text = "";
+    txtyear.Text = "";
+
+    // Clearing Label
+    lbldaoutput.Text = "";
+}
+
+---
+
+Conclusion
+
+This practice demonstrates basic C# Windows Forms concepts, including variables, user input, integer parsing, TextBox controls, Label controls, and button click event handlers.
